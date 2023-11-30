@@ -1,4 +1,5 @@
 using CompanyOG.Data;
+using CompanyOG.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+//288 strona
+builder.Services.AddDbContext<CompanyContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("CompanyConnection")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -37,7 +43,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Countries}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();

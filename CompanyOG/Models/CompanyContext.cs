@@ -20,6 +20,10 @@ namespace CompanyOG.Models
                 .Entity<CountryRegion>()
                 .Property(c=>c.Code)
                 .HasColumnName("CountryRegionCode");
+            modelBuilder
+                .Entity<CountryRegion>()
+                .Property(c => c.Date)
+                .HasColumnName("ModifiedDate");
             modelBuilder.Entity<CountryRegion>().ToTable("CountryRegion", "Person");
 
         }
