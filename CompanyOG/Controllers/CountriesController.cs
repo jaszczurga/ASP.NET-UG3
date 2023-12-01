@@ -1,5 +1,6 @@
 ﻿using CompanyOG.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CompanyOG.Controllers
 {
@@ -10,9 +11,9 @@ namespace CompanyOG.Controllers
         public CountriesController(CompanyContext db) {
             _db=db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var countries = _db.CountryRegions.ToList();
+            var countries = await _db.CountryRegions.ToListAsync();
             return View(countries);
         }
     }

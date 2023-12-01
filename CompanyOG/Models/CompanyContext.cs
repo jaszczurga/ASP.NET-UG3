@@ -14,7 +14,7 @@ namespace CompanyOG.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // c=> c.Code zamiast "Code"
+            // c=> c.Code zamiast "Code" ulatwienie
             modelBuilder.Entity<CountryRegion>().HasKey(c => c.Code);
             modelBuilder
                 .Entity<CountryRegion>()
