@@ -17,9 +17,21 @@ namespace CompanyOG.Controllers
             return View(countries);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CountryRegion newCountry)
+        {
+            if(ModelState.IsValid) { 
+            _db.CountryRegions.Add(newCountry); //tylk ow ramie w repo
+            await _db.SaveChangesAsync(); // tu faktycznie dodaje
+        }
+            // RedirectToAction("Index") zamiast View("Index") bo musielibysmy przekaza liste a tak to wywoluje ta funkcje
+            return RedirectToAction("Index");
         }
     }
 }
