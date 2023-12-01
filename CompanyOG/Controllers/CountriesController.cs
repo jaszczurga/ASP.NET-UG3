@@ -16,5 +16,10 @@ namespace CompanyOG.Controllers
             var countries = await _db.CountryRegions.ToListAsync();
             return View(countries);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
